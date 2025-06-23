@@ -33,8 +33,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import ProfilePage from "./components/ProfilePage";
 import Contact from "./components/Contact";
 import LoadingSpinner from "./components/LoadingSpinner";
-import Products from "./components/products";
-
+import Products from "./components/Products";
 export default function App() {
   const { data, isLoading: isAuth } = useUserCheckQuery();
   const { user, isLoading } = useSelector((state) => state.authSlice);
