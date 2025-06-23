@@ -16,7 +16,7 @@ import EmailVerificationPage from "./pages/EmailVerificationPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import About from "./components/About";
 import FeautredProducts from "./components/FeautredProducts";
-import Products from "./components/products";
+
 import ProductDetails from "./components/ProductDetails";
 import CartPage from "./components/CartPage";
 import PaymentSuccess from "./components/PaymentSuccess";
@@ -33,6 +33,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import ProfilePage from "./components/ProfilePage";
 import Contact from "./components/Contact";
 import LoadingSpinner from "./components/LoadingSpinner";
+import Products from "./components/products";
 
 export default function App() {
   const { data, isLoading: isAuth } = useUserCheckQuery();
