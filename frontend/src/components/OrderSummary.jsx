@@ -20,7 +20,7 @@ export default function OrderSummary({ cart = [] }) {
   const dispatch = useDispatch();
   // console.log(data);
 
-  const subtotal = cart.map((item) => item.product.price * item.quantity);
+  const subtotal = cart.map((item) => item.product?.price * item.quantity);
 
   const calcSubtotal = subtotal.reduce((sum, item) => sum + item, 0);
 

@@ -5,11 +5,11 @@ import { cloudinary } from "./cloudinary.js";
 
 const storage = new CloudinaryStorage({
   cloudinary,
-  params: {
-    folder: "avatars",
+  params: (req, file) => ({
+    folder: req.folder || "products", // default to "products"
     allowed_formats: ["jpg", "png", "jpeg", "webp"],
-    transformation: [{ width: 500, height: 500, crop: "limit" }],
-  },
+    transformation: [{ width: 1000, height: 1000, crop: "limit" }],
+  }),
 });
 
 export const upload = multer({ storage });

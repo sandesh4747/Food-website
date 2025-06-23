@@ -130,7 +130,7 @@ export default function Navbar() {
 
           {searchTerm && searchResults?.products.length > 0 && (
             <div className="absolute top-12 bg-white border border-gray-200 rounded-lg shadow-lg z-50 w-full max-h-72 overflow-y-auto">
-              {searchResults?.products.map((product) => (
+              {searchResults?.products?.map((product) => (
                 <Link
                   onClick={() => setSearchTerm("")}
                   to={`/productDetails/${product._id}`}
@@ -138,7 +138,7 @@ export default function Navbar() {
                   className="flex items-center gap-4 px-4 py-2 hover:bg-gray-100"
                 >
                   <img
-                    src={product.image[0]}
+                    src={product?.image[0]}
                     alt={product.name}
                     className="w-12 h-12 object-cover rounded"
                   />

@@ -31,7 +31,7 @@ export default function CartItem({ item }) {
 
   const handleRemove = async () => {
     try {
-      await removeCart({ productId: item.product._id }).unwrap();
+      await removeCart({ productId: item?.product?._id }).unwrap();
     } catch (error) {
       console.error("Failed to remove item:", error);
     }
@@ -43,19 +43,21 @@ export default function CartItem({ item }) {
       <div className="md:hidden space-y-4">
         <div className="flex items-start gap-4">
           <img
-            src={item.product.image[0]}
-            alt={item.product.name}
+            src={item?.product?.image[0]}
+            alt={item?.product?.name}
             className="h-16 w-16 object-cover rounded-lg border border-orange-200"
           />
           <div className="flex-1">
-            <p className="font-semibold text-orange-900">{item.product.name}</p>
+            <p className="font-semibold text-orange-900">
+              {item.product?.name}
+            </p>
             <div className="flex justify-between items-center mt-2">
               <div>
                 <p className="text-sm text-orange-700">
-                  Rs. {item.product.price.toFixed(2)}
+                  Rs. {item?.product?.price.toFixed(2)}
                 </p>
                 <p className="text-sm font-bold text-red-600">
-                  Total: ${(item.product.price * item.quantity).toFixed(2)}
+                  Total: ${(item?.product?.price * item.quantity).toFixed(2)}
                 </p>
               </div>
               <button
@@ -98,13 +100,13 @@ export default function CartItem({ item }) {
         {/* Product Image + Info */}
         <div className="flex items-center gap-6 flex-1 min-w-0">
           <img
-            src={item.product.image[0]}
-            alt={item.product.name}
+            src={item?.product?.image[0]}
+            alt={item?.product?.name}
             className="h-20 w-20 object-cover rounded-lg border border-orange-200"
           />
           <div className="min-w-0">
             <p className="text-lg font-semibold text-orange-900 truncate">
-              {item.product.name}
+              {item?.product?.name}
             </p>
             <button
               onClick={handleRemove}
@@ -120,7 +122,7 @@ export default function CartItem({ item }) {
         <div className="w-24 text-center">
           <span className="text-xs font-medium text-orange-700">Price</span>
           <p className="text-sm text-orange-800">
-            Rs. {item.product.price.toFixed(2)}
+            Rs. {item?.product?.price.toFixed(2)}
           </p>
         </div>
 
@@ -153,7 +155,7 @@ export default function CartItem({ item }) {
         <div className="w-24 text-right">
           <span className="text-xs font-medium text-orange-700">Total</span>
           <p className="text-lg font-bold text-red-600">
-            Rs. {(item.product.price * item.quantity).toFixed(2)}
+            Rs. {(item?.product?.price * item.quantity).toFixed(2)}
           </p>
         </div>
       </div>
