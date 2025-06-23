@@ -1,0 +1,325 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import "tailwindcss";
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+@layer base {
+  button {
+    @apply cursor-pointer;
+  }
+}
+@layer base {
+  :root {
+    --yellow: linear-gradient(180deg, #f8d49a -146.42%, #fad79d -46.42%);
+    --orange: #fca61f;
+    --black: #242d49;
+    --gray: #788097;
+    --purple: linear-gradient(180deg, #bb67ff 0%, #c484f3 100%);
+    --pink: #ff919d;
+    --glass: rgba(255, 255, 255, 0.54);
+    --boxShadow: 0px 19px 60px rgb(0 0 0 / 8%);
+    --smboxShadow: -79px 51px 60px rgba(0, 0, 0, 0.08);
+    --activeItem: #f799a354;
+  }
+}
+
+@layer utilities {
+  .text-glow-white {
+    text-shadow: 0px 0px 15px white;
+  }
+}
+
+/* sidebar */
+/* .menu {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+} */
+
+/* .menuItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 2.5rem;
+  margin-left: 2rem;
+  position: relative;
+  transition: all 300ms ease;
+  font-size: 14px;
+  border-radius: 0.7rem;
+} */
+/* .logo {
+  margin-left: 20%;
+} */
+
+/* .menuItem:hover {
+  cursor: pointer;
+} */
+
+/* .active {
+  background: var(--activeItem);
+  margin-left: 0;
+} */
+
+/* .active::before {
+  content: "";
+  width: 8px;
+  height: 100%;
+  background: var(--pink);
+  margin-right: calc(1rem - 8px);
+} */
+
+/* .menu .menuItem:last-child {
+  position: absolute;
+  bottom: 2.3rem;
+  width: 100%;
+} */
+
+/* main dash */
+
+/* .MainDash {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+} */
+
+/* Cards */
+
+/* .Cards {
+  display: flex;
+  gap: 10px;
+} */
+
+/* .parentContainer {
+  width: 100%;
+} */
+
+/* Card */
+/* .CompactCard {
+  display: flex;
+  flex: 1;
+
+  border-radius: 0.7rem;
+  color: white;
+  position: relative;
+  cursor: pointer;
+  padding: 1rem;
+} */
+
+/* .CompactCard:hover {
+  box-shadow: none !important;
+} */
+/* .radialBar {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1rem;
+} */
+.CircularProgressbar {
+  width: 4rem !important;
+  overflow: visible;
+}
+
+.CircularProgressbar-path {
+  stroke: white !important;
+  stroke-width: 12px !important;
+  filter: drop-shadow(2px 4px 6px);
+}
+.CircularProgressbar-trail {
+  display: none;
+}
+
+.CircularProgressbar-text {
+  fill: white !important;
+}
+
+/* .radialBar > span {
+  font-size: 17px;
+  font-weight: bold;
+} */
+
+/* .detail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+} */
+
+/* .detail > span:nth-child(2) {
+  font-size: 22px;
+} */
+
+/* .detail > span:nth-child(3) {
+  font-size: 12px;
+} */
+
+/* Expandable Card */
+/* 
+.ExpandedCard {
+  position: absolute;
+  width: 60%;
+  height: 70vh;
+  z-index: 10;
+  left: 13rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1rem;
+} */
+
+/* .ExpandedCard > span:nth-of-type(1) {
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+  text-shadow: 0px 0px 15px white;
+} */
+/* .ExpandedCard > span:nth-of-type(2) {
+  color: #dfdede;
+  font-size: 16px;
+  font-size: 26px;
+  font-weight: bold;
+  text-shadow: 0px 0px 15px white;
+} */
+
+/* .chartContainer {
+  width: 70%;
+} */
+
+/* Right side */
+/* .RightSide {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  justify-content: space-evenly;
+} */
+
+/* .Updates {
+  width: 99%;
+  background: white;
+  border-radius: 0.7rem;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  font-size: 13px;
+} */
+
+/* .update {
+  display: flex;
+  gap: 0.5rem;
+} */
+/* .update > img {
+  width: 3.2rem;
+  height: 3.2rem;
+} */
+
+/* .noti > div > span:nth-of-type(1) {
+  font-weight: bold;
+} */
+
+@media screen and (max-width: 1200px) {
+  /* .AppGlass {
+    grid-template-columns: 10% 50% auto;
+    overflow-y: scroll;
+  } */
+}
+
+@media screen and (max-width: 1200px) {
+  /* .menuItem p {
+    display: none;
+  }
+  .logo {
+    display: none;
+  }
+  .MainDash {
+    justify-content: flex-start;
+    gap: 3rem;
+    margin-top: 2rem;
+  } */
+  /* .Cards {
+    flex-direction: column;
+  } */
+  /* .parentContainer {
+    height: 9rem;
+  } */
+  /* .ExpandedCard {
+    top: 2rem;
+    height: 50vh;
+    left: 6rem;
+  } */
+  /* .RightSide {
+    justify-content: flex-start;
+    margin-top: 3rem;
+  } */
+  /* .Table {
+    width: 170%;
+  } */
+}
+
+@media screen and (max-width: 768px) {
+  /* .Sidebar {
+    position: fixed;
+    z-index: 10;
+
+    background: #ffe0e0;
+    width: 40%;
+    padding-right: 1rem;
+    height: 100%;
+  } */
+
+  /* .menuItem p {
+    display: block;
+  } */
+  /* .logo {
+    display: flex;
+    margin-left: 10%;
+
+    justify-content: center;
+  } */
+  /* .menu .menuItem:last-child {
+    position: relative;
+    margin-top: 2rem;
+  } */
+  /* .AppGlass {
+    grid-template-columns: 1fr;
+  }
+  .AppGlass::-webkit-scrollbar {
+    display: none;
+  } */
+  /* .MainDash {
+    align-items: center;
+  } */
+  /* .Cards {
+    width: 90%;
+  } */
+  /* .ExpandedCard {
+    top: 8rem;
+    height: 50%;
+    left: 15px;
+    width: 80%;
+  } */
+  /* .Table {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 18rem;
+  } */
+  /* .RightSide {
+    width: 100%;
+    margin-top: 0;
+  }
+  .RightSide > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  } */
+}
