@@ -30,7 +30,6 @@ export default function PaymentSuccess() {
     const fetchOrderDetails = async () => {
       try {
         const res = await paymentSuccess({ sessionId }).unwrap();
-        console.log("Payment success response:", res);
 
         if (res.success) {
           setOrderId(res.orderId);
@@ -40,11 +39,9 @@ export default function PaymentSuccess() {
           }
 
           if (user?._id) {
-            console.log("Attempting to clear cart for user:", user._id);
             const clearResponse = await clearCart({
               userId: user._id,
             }).unwrap();
-            console.log("Cart clear response:", clearResponse);
           }
         }
       } catch (err) {

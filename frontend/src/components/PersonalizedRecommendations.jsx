@@ -3,7 +3,7 @@ import ReviewComponent from "./ReviewComponent";
 
 export default function PersonalizedRecommendations() {
   const { data } = useRecommendedProductQuery();
-  console.log("rec", data);
+
   return (
     <div className="bg-white p-6 rounded-xl shadow-sm">
       <h2 className="text-xl font-semibold text-orange-800 mb-4">

@@ -3,7 +3,6 @@ import { useGetAllOrdersQuery, useGetMyOrdersQuery } from "./api/orderApi";
 
 export default function RecentOrders() {
   const { data } = useGetMyOrdersQuery();
-  console.log(data);
 
   const orders = data;
 
