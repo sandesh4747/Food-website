@@ -36,10 +36,8 @@ export default function ProductsList({ onEditClick }) {
       const res = await deleteProduct(id).unwrap();
       toast.success("Product deleted successfully");
     } catch (error) {
-      toast.error(
-        error?.data?.message || error.error || "Failed to delete product",
-        error
-      );
+      console.error(error);
+      toast.error(error?.data?.message || error.error || error);
     } finally {
       setDeletingId(null); // Reset after operation completes
     }

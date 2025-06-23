@@ -22,6 +22,10 @@ router.get("/", getAllProducts);
 router.post(
   "/create",
   upload.array("images"),
+  (req, res, next) => {
+    req.folder = "products"; // override default folder
+    next();
+  },
   protect,
   adminRoute,
   createProduct
