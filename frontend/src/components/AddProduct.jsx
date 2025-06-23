@@ -37,7 +37,7 @@ export default function AddProduct() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (images.length === 0) {
-      alert("At least one image is required");
+      toast.error("At least one image is required");
       return;
     }
 
@@ -69,7 +69,10 @@ export default function AddProduct() {
       setImages([]);
     } catch (err) {
       console.error(err);
-      toast.error(err?.data?.message || err.error);
+      toast.error(
+        err?.data?.message || err.error || "Failed to add product",
+        err
+      );
     }
   };
 
