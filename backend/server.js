@@ -11,11 +11,13 @@ import stripeRoutes from "./routes/stripe.route.js";
 import couponRoutes from "./routes/coupon.route.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import path from "path";
 
 dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+const __dirname = path.resolve();
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -33,6 +35,13 @@ app.use("/api/v1/address", addressRoutes);
 app.use("/api/v1/order", orderRoutes);
 app.use("/api/v1/stripe", stripeRoutes);
 app.use("/api/v1/coupon", couponRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"))
+  );
+}
 
 const PORT = process.env.PORT || 4000;
 
