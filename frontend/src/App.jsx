@@ -35,7 +35,7 @@ import Contact from "./components/Contact";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Products from "./components/Products";
 export default function App() {
-  const { data, isLoading: isAuth } = useUserCheckQuery();
+  const { data } = useUserCheckQuery();
   const { user, isLoading } = useSelector((state) => state.authSlice);
   useEffect(() => {
     data;
