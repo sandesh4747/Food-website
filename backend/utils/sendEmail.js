@@ -1,23 +1,35 @@
 import nodemailer from "nodemailer";
-import { User } from "../models/user.model.js";
 
-// Create reusable transporter object
-const transporter = nodemailer.createTransport({
-  service: process.env.EMAIL_SERVICE || "Gmail", // e.g., 'Gmail', 'SendGrid', 'Mailgun'
-  auth: {
-    user: process.env.EMAIL_USERNAME,
-    pass: process.env.EMAIL_PASSWORD,
-  },
-});
+// Dynamically create Ethereal test account transporter
+const createEtherealTransporter = async () => {
+  const testAccount = await nodemailer.createTestAccount();
+
+  return nodemailer.createTransport({
+    host: testAccount.smtp.host,
+    port: testAccount.smtp.port,
+    secure: testAccount.smtp.secure,
+    auth: {
+      user: testAccount.user,
+      pass: testAccount.pass,
+    },
+  });
+};
 
 export const sendEmail = async (options) => {
   try {
-    await transporter.sendMail({
-      from: `"Your App Name" <${process.env.EMAIL_USERNAME}>`,
+    const transporter = await createEtherealTransporter();
+
+    const info = await transporter.sendMail({
+      from: `"Your App Name" <no-reply@example.com>`,
       to: options.email,
       subject: options.subject,
       html: options.message,
     });
+
+    console.log(
+      "📧 Email sent. Preview it at:",
+      nodemailer.getTestMessageUrl(info)
+    );
   } catch (error) {
     console.error("Email send error:", error);
     throw new Error("Failed to send email");

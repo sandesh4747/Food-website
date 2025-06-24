@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Lock, Mail, User, UserPlus, Eye, EyeOff } from "lucide-react";
+import { Lock, Mail, User, UserPlus, Eye, EyeOff, Loader } from "lucide-react";
 import frontLogo from "../assets/front-logo.png";
 import { Link } from "react-router-dom";
 import { useUserSignupMutation } from "../components/api/userApi";

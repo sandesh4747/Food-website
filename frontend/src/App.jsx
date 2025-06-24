@@ -34,6 +34,7 @@ import ProfilePage from "./components/ProfilePage";
 import Contact from "./components/Contact";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Products from "./components/Products";
+import ChangePassword from "./pages/ChangePassword";
 export default function App() {
   const { data } = useUserCheckQuery();
   const { user, isLoading } = useSelector((state) => state.authSlice);
@@ -72,6 +73,10 @@ export default function App() {
         {
           path: "/reset-password/:token",
           element: <ResetPasswordPage />,
+        },
+        {
+          path: "/profile/change-password",
+          element: <ChangePassword />,
         },
         {
           path: "/dashboard",

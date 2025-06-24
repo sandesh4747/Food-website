@@ -21,8 +21,16 @@ export default function RootLayout() {
   }
 
   // Paths where navbar should be hidden
-  const hideNavbarPaths = ["/dashboard", "*"];
-  const shouldHideNavbar = location.pathname.startsWith("/dashboard");
+  const hideNavbarPaths = [
+    "/dashboard",
+    "/forgot-password",
+    "/verify-email",
+    "/reset-password",
+  ];
+
+  const shouldHideNavbar =
+    hideNavbarPaths.some((path) => location.pathname.startsWith(path)) ||
+    /^\/reset-password\/[^/]+$/.test(location.pathname); // Matches /reset-password/:token
 
   // Define paths where footer should be hidden
   const hideFooterPaths = [
@@ -33,6 +41,10 @@ export default function RootLayout() {
     "/dashboard/customers",
     "/dashboard/products",
     "/dashboard/analytics",
+    "/forgot-password",
+    "/reset-password/*",
+    "/verify-email",
+    "/reset-password/:token",
     "*",
   ];
   const shouldHideFooter = hideFooterPaths.includes(location.pathname);

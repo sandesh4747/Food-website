@@ -1,78 +1,88 @@
-import {
-  PASSWORD_RESET_REQUEST_TEMPLATE,
-  PASSWORD_RESET_SUCCESS_TEMPLATE,
-  VERIFICATION_EMAIL_TEMPLATE,
-} from "./emailTemplate.js";
-import { mailtrapClient, sender } from "./mailtrap.config.js";
+import nodemailer from "nodemailer";
 
+// Create and export a reusable Ethereal transporter
+export const createEtherealTransporter = async () => {
+  const testAccount = await nodemailer.createTestAccount();
+
+  return nodemailer.createTransport({
+    host: testAccount.smtp.host,
+    port: testAccount.smtp.port,
+    secure: testAccount.smtp.secure,
+    auth: {
+      user: testAccount.user,
+      pass: testAccount.pass,
+    },
+  });
+};
+
+// Send verification email
 export const sendVerificationEmail = async (email, verificationToken) => {
-  const recipient = [{ email }];
-  try {
-    const response = await mailtrapClient.send({
-      from: sender,
-      to: recipient,
-      subject: "Verify your email",
-      html: VERIFICATION_EMAIL_TEMPLATE.replace(
-        "{verificationCode}",
-        verificationToken
-      ),
-      category: "Email Verification",
-    });
-  } catch (error) {
-    console.log("Error sending verification:", error);
-    throw new Error(`Failed to send verification email;${error}`);
-  }
+  const transporter = await createEtherealTransporter();
+
+  const message = {
+    from: '"Sandesh" <no-reply@example.com>',
+    to: email,
+    subject: "Verify your email",
+    html: `<p>Your verification code is: <b>${verificationToken}</b></p>`,
+  };
+
+  const info = await transporter.sendMail(message);
+  console.log(
+    "Verification email sent. Preview URL:",
+    nodemailer.getTestMessageUrl(info)
+  );
 };
 
+// Welcome email
 export const sendWelcomeEmail = async (email, name) => {
-  const recipient = [{ email }];
+  const transporter = await createEtherealTransporter();
 
-  try {
-    const response = await mailtrapClient.send({
-      from: sender,
-      to: recipient,
+  const message = {
+    from: '"Sandesh" <no-reply@example.com>',
+    to: email,
+    subject: "Welcome!",
+    html: `<h1>Welcome, ${name}!</h1><p>Thanks for joining our platform.</p>`,
+  };
 
-      template_uuid: "ce41ad83-7166-42c0-82c7-8b4660679fa5",
-      template_variables: {
-        company_info_name: "Auth Company",
-        name: name,
-      },
-    });
-  } catch (error) {
-    console.log("Error sending welcome email:", error);
-    throw new Error(`Failed to send welcome email:${error}`);
-  }
+  const info = await transporter.sendMail(message);
+  console.log(
+    "Welcome email sent. Preview URL:",
+    nodemailer.getTestMessageUrl(info)
+  );
 };
 
+// Password reset email
 export const sendPasswordResetEmail = async (email, resetURL) => {
-  const recipient = [{ email }];
+  const transporter = await createEtherealTransporter();
 
-  try {
-    const response = await mailtrapClient.send({
-      from: sender,
-      to: recipient,
-      subject: "Reset your password",
-      html: PASSWORD_RESET_REQUEST_TEMPLATE.replace("{resetURL}", resetURL),
-      category: "Password Reset",
-    });
-  } catch (error) {
-    console.log("Error sending password reset email:", error);
-    throw new Error(`Error sending password reset email:${error}`);
-  }
+  const message = {
+    from: '"Sandesh" <no-reply@example.com>',
+    to: email,
+    subject: "Reset your password",
+    html: `<p>Click this link to reset your password: <a href="${resetURL}">${resetURL}</a></p>`,
+  };
+
+  const info = await transporter.sendMail(message);
+  console.log(
+    "Password reset email sent. Preview URL:",
+    nodemailer.getTestMessageUrl(info)
+  );
 };
 
+// Password reset success email
 export const sendResetSuccessEmail = async (email) => {
-  const recipient = [{ email }];
-  try {
-    const response = await mailtrapClient.send({
-      from: sender,
-      to: recipient,
-      subject: "Password Reset Successful",
-      html: PASSWORD_RESET_SUCCESS_TEMPLATE,
-      category: "Password Reset",
-    });
-  } catch (error) {
-    console.log("Error sending password reset success email:", error);
-    throw new Error(`Error sending password reset success email:${error}`);
-  }
+  const transporter = await createEtherealTransporter();
+
+  const message = {
+    from: '"Sandesh" <no-reply@example.com>',
+    to: email,
+    subject: "Password Reset Successful",
+    html: `<p>Your password has been successfully reset.</p>`,
+  };
+
+  const info = await transporter.sendMail(message);
+  console.log(
+    "Reset success email sent. Preview URL:",
+    nodemailer.getTestMessageUrl(info)
+  );
 };

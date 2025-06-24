@@ -6,6 +6,7 @@ import {
   Lock,
   Users,
   BarChart2,
+  KeyRound,
 } from "lucide-react";
 import { setUser } from "../store/authSlice";
 import toast from "react-hot-toast";
@@ -54,6 +55,11 @@ export default function ProfilePage() {
 
   // Common profile sections
   const userSections = [
+    {
+      icon: <KeyRound size={18} className="text-orange-600" />,
+      title: "Change Password",
+      path: "/profile/change-password",
+    },
     {
       icon: <User size={18} className="text-orange-600" />,
       title: "Personal Info",
