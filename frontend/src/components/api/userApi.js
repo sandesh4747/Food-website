@@ -69,6 +69,14 @@ export const userApi = mainApi.injectEndpoints({
       }),
       invalidatesTags: ["User"],
     }),
+    updateProfile: builder.mutation({
+      query: (formData) => ({
+        url: `/auth/profile`,
+        method: "PATCH",
+        body: formData,
+      }),
+      invalidatesTags: ["User"],
+    }),
   }),
 });
 
@@ -80,4 +88,5 @@ export const {
   useForgotPasswordMutation,
   useVerifyEmailMutation,
   useResetPasswordMutation,
+  useUpdateProfileMutation,
 } = userApi;

@@ -349,6 +349,7 @@ export const updateProfile = async (req, res) => {
 
     // Only update avatar if a file is uploaded
     if (req.file) {
+      // console.log(req.file);
       user.avatar = {
         url: req.file.path,
         public_id: req.file.filename,

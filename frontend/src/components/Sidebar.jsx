@@ -60,11 +60,11 @@ export default function Sidebar({ admin }) {
             >
               {/* Logo */}
               <NavLink to="/" className="flex h-20 w-20 logo cursor-pointer">
-                <img className="w-15 h-15 ml-5" src={logo} alt="logo" />
+                <img className="w-15 h-15 ml-10" src={logo} alt="logo" />
               </NavLink>
 
               {/* Menu */}
-              <div className="mt-16 flex flex-col gap-8 ">
+              <div className="mt-5 flex flex-col gap-8 ">
                 {filteredSidebarData.map((data) => (
                   <NavLink
                     key={data.heading}
