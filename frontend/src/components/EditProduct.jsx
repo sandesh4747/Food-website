@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
-import {
-  useAddProductMutation,
-  useUpdateProductMutation,
-} from "./api/productApi";
+
+import { useUpdateProductMutation } from "./api/productApi";
 import toast from "react-hot-toast";
 import { Loader } from "lucide-react";
 import { useNavigate } from "react-router-dom";
