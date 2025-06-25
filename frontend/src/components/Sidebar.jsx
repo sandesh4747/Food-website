@@ -69,11 +69,15 @@ export default function Sidebar({ admin }) {
                   <NavLink
                     key={data.heading}
                     to={data.path}
-                    className={`flex items-center gap-4 h-10 ml-8 relative transition-all duration-300 ease-in-out text-sm rounded-lg ${
+                    className={`flex items-center gap-4 h-10 relative transition-all text-sm rounded-lg pl-8 duration-200
+                      border-orange-500
+                     
+                    ${
                       isMenuItemActive(data.path)
-                        ? "bg-orange-200 ml-0 border-l-4 border-orange-500"
-                        : ""
-                    } hover:cursor-pointer`} // Notice the space before hover
+                        ? "bg-orange-200 border-l-4 ml-8 border-orange-500"
+                        : "ml-0"
+                    }
+                    hover:cursor-pointer `}
                   >
                     <data.icon className="w-6 h-6 text-orange-500" />
                     <p className="hidden lg:block font-semibold text-orange-500">
