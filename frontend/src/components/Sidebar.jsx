@@ -74,8 +74,8 @@ export default function Sidebar({ admin }) {
                      
                     ${
                       isMenuItemActive(data.path)
-                        ? "bg-orange-200 border-l-4 ml-8 border-orange-500"
-                        : "ml-0"
+                        ? "bg-orange-200 border-l-4  border-orange-500 pl-10"
+                        : ""
                     }
                     hover:cursor-pointer `}
                   >
