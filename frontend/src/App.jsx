@@ -39,16 +39,16 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 export default function App() {
-  const { data } = useUserCheckQuery();
-  const { user, isLoading } = useSelector((state) => state.authSlice);
+  const { data: userData, isLoading, isSuccess } = useUserCheckQuery();
+  const { user } = useSelector((state) => state.authSlice);
   useEffect(() => {
-    data;
-  }, [data]);
+    userData;
+  }, [userData]);
 
   useEffect(() => {
-    data;
+    userData;
     AOS.init({ duration: 900, once: true }); // 👈 initialize AOS
-  }, [data]);
+  }, [userData]);
 
   if (isLoading) return <LoadingSpinner />;
 
@@ -87,7 +87,12 @@ export default function App() {
         },
         {
           path: "/dashboard",
-          element: user ? <Dashboard /> : <Navigate to="/" replace />,
+          element:
+            isSuccess && userData ? (
+              <Dashboard />
+            ) : (
+              <Navigate to="/login" replace />
+            ),
           children: [
             {
               index: true,

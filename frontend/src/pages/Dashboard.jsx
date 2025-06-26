@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import RightSide from "../components/RightSide";
 import { Outlet, useLocation } from "react-router-dom";
 import OrderPage from "../components/Table";
 import { useSelector } from "react-redux";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { useUserCheckQuery } from "../components/api/userApi";
 
 export default function Dashboard() {
   const location = useLocation();
   const { user, isLoading } = useSelector((state) => state.authSlice);
+  const { data: userData, isSuccess } = useUserCheckQuery();
 
-  if (isLoading) return <LoadingSpinner />;
+  // Show loading spinner while checking auth
+  if (isLoading || !isSuccess) return <LoadingSpinner />;
 
   const admin = user?.role === "admin";
   const showRightSide = location.pathname === "/dashboard";
