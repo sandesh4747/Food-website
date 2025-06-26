@@ -88,7 +88,7 @@ export default function Sidebar({ admin }) {
 
                 <button
                   onClick={logout}
-                  className="flex items-center gap-4 h-10 ml-8 text-orange-500  w-full "
+                  className="flex items-center gap-4 h-10 ml-8 text-orange-500  w-full  cursor-pointer"
                 >
                   <LogOut />
                   <p className="font-semibold hidden lg:block">Logout</p>
@@ -157,7 +157,10 @@ export default function Sidebar({ admin }) {
                       </p>
                     </NavLink>
                   ))}
-                  <div className="flex items-center gap-4 h-10 ml-8 relative mt-8">
+                  <div
+                    onClick={logout}
+                    className="flex items-center gap-4 h-10 ml-8 relative mt-8 cursor-pointer"
+                  >
                     <LogOut className="text-orange-500" />
                     <p className="font-semibold text-orange-500">Logout</p>
                   </div>

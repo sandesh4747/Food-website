@@ -24,7 +24,7 @@ function CompactCard({ param, setExpanded }) {
   return (
     <motion.div
       onClick={setExpanded}
-      className="flex flex-1 position relative p-4 text-white rounded-lg cursor-pointer hover:shadow-none "
+      className="flex flex-1 position relative p-4 text-white rounded-lg cursor-pointer hover:shadow-none gap-5 "
       style={{
         background: param.color.backGround,
         boxShadow: param.color.boxShadow,
@@ -39,7 +39,7 @@ function CompactCard({ param, setExpanded }) {
         />
         <span>{param.title}</span>
       </div>
-      <div className="flex flex-1 flex-col justify-between items-end">
+      <div className="flex flex-1 flex-col justify-between  items-end">
         <Png />
         <span className="text-xl">{param.value}</span>
         <span className="text-xs">Last 24 hours</span>
