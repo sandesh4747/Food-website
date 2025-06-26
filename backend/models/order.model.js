@@ -14,6 +14,7 @@ const orderSchema = new mongoose.Schema(
           ref: "Product",
           required: true,
         },
+
         quantity: {
           type: Number,
           required: true,
@@ -21,6 +22,10 @@ const orderSchema = new mongoose.Schema(
         },
         price: {
           type: Number,
+          required: true,
+        },
+        name: {
+          type: String,
           required: true,
         },
       },

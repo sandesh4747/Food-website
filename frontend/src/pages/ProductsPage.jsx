@@ -28,7 +28,7 @@ export default function ProductsPage() {
 
   return (
     <div className="min-h-screen relative overflow-hidden max-w-7xl mx-auto overflow-x-auto">
-      <div className="relative container mx-auto px-4 py-16 min-h-screen">
+      <div className="relative container mx-auto px-4 py-16 min-h-screen ">
         <motion.h1
           className="text-4xl font-bold mb-8 text-red-400 text-center"
           initial={{ opacity: 0, y: -20 }}

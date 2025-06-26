@@ -69,6 +69,7 @@ export const createCheckoutSession = async (req, res) => {
             _id: p.product._id,
             quantity: p.quantity,
             price: p.product.price,
+            name: p.product.name,
           }))
         ),
       },
@@ -128,9 +129,12 @@ export const checkoutSuccess = async (req, res) => {
       const totalItems = products.reduce((sum, item) => sum + item.quantity, 0);
       const newOrder = new Order({
         user: session.metadata.userId,
-        items: products.map((product) => ({
+        items: products?.map((product) => ({
           product: product._id,
           quantity: product.quantity,
+
+          name: product?.name,
+
           price: product.price,
         })),
         totalItems,

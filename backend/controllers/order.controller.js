@@ -17,6 +17,50 @@ export const getOrders = async (req, res) => {
   }
 };
 
+// export const createOrder = async (req, res) => {
+//   try {
+//     const { items, shippingAddress, paymentMethod } = req.body;
+
+//     if (!items || items.length === 0) {
+//       return res.status(400).json({ message: "No items in order" });
+//     }
+
+//     let totalItems = 0;
+//     let totalAmount = 0;
+
+//     // Calculate totals and validate items
+//     for (const item of items) {
+//       const product = await Product.findById(item.product);
+//       if (!product) {
+//         return res.status(404).json({ message: "Product not found" });
+//       }
+
+//       totalItems += item.quantity;
+//       totalAmount += item.quantity * item.price;
+//     }
+
+//     const order = await Order.create({
+//       user: req.user._id,
+//       items,
+//       shippingAddress,
+//       payment: {
+//         method: paymentMethod || "COD",
+//         status: paymentMethod === "COD" ? "Pending" : "Pending", // Initial status
+//       },
+//       totalItems,
+//       totalAmount,
+//     });
+
+//     res.status(201).json(order);
+//   } catch (error) {
+//     res
+//       .status(500)
+//       .json({ message: "Failed to create order", error: error.message });
+//   }
+// };
+
+// Get orders of the logged-in user
+
 export const createOrder = async (req, res) => {
   try {
     const { items, shippingAddress, paymentMethod } = req.body;
@@ -27,6 +71,7 @@ export const createOrder = async (req, res) => {
 
     let totalItems = 0;
     let totalAmount = 0;
+    const orderItems = [];
 
     // Calculate totals and validate items
     for (const item of items) {
@@ -35,17 +80,26 @@ export const createOrder = async (req, res) => {
         return res.status(404).json({ message: "Product not found" });
       }
 
+      // Prepare order item with product details
+      orderItems.push({
+        product: item.product,
+        name: product.name,
+        image: product.image,
+        quantity: item.quantity,
+        price: item.price,
+      });
+
       totalItems += item.quantity;
       totalAmount += item.quantity * item.price;
     }
 
     const order = await Order.create({
       user: req.user._id,
-      items,
+      items: orderItems,
       shippingAddress,
       payment: {
         method: paymentMethod || "COD",
-        status: paymentMethod === "COD" ? "Pending" : "Pending", // Initial status
+        status: paymentMethod === "COD" ? "Pending" : "Pending",
       },
       totalItems,
       totalAmount,
@@ -59,7 +113,6 @@ export const createOrder = async (req, res) => {
   }
 };
 
-// Get orders of the logged-in user
 export const getMyOrders = async (req, res) => {
   try {
     const orders = await Order.find({ user: req.user._id }).populate(

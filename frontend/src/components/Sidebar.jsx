@@ -42,7 +42,7 @@ export default function Sidebar({ admin }) {
       <button
         onClick={() => setOpen(true)} // Only sets open to true
         aria-label="Open Menu"
-        className="md:hidden p-5 absolute  top-4 left-4"
+        className="md:hidden p-5 absolute  top-5 left-1"
       >
         <Menu className="w-6 h-6 text-gray-700" />
       </button>

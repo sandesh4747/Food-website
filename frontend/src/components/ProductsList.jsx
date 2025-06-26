@@ -44,11 +44,11 @@ export default function ProductsList({ onEditClick }) {
   };
 
   return (
-    <div className="p-4 md:p-10 bg-red-50 min-h-screen overflow-x-auto">
+    <div className="p-4 md:p-10 md:bg-red-50 min-h-screen overflow-x-auto ">
       <h2 className="text-2xl font-bold text-red-600 mb-6">All Products</h2>
 
-      <Card className="rounded-lg shadow-md bg-white">
-        <table className="w-full min-w-max table-auto text-left">
+      <Card className="rounded-lg shadow-md bg-white ">
+        <table className="w-full min-w-max table-auto text-left bg-white">
           <thead>
             <tr className="bg-gradient-to-r from-orange-200 to-red-200 text-orange-800">
               {TABLE_HEAD.map((head) => (

@@ -77,10 +77,10 @@ export default function AddProduct() {
   };
 
   return (
-    <div className="py-10 bg-red-50">
+    <div className="py-10 md:bg-red-50">
       <form
         onSubmit={handleSubmit}
-        className="md:p-10 p-4 space-y-6 max-w-2xl mx-auto bg-white rounded-lg shadow-md"
+        className="w-full md:p-10 p-4 space-y-6 md:max-w-2xl mx-auto bg-white rounded-lg shadow-md"
       >
         <h2 className="text-2xl font-bold text-red-600">Add New Product</h2>
 
@@ -89,7 +89,7 @@ export default function AddProduct() {
           <p className="text-base font-semibold text-orange-500">
             Product Images
           </p>
-          <div className="flex flex-wrap items-center gap-3 mt-2">
+          <div className="flex flex-wrap items-center gap-3 mt-2 ">
             {Array(4)
               .fill("")
               .map((_, index) => (

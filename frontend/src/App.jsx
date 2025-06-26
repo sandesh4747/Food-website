@@ -35,13 +35,20 @@ import Contact from "./components/Contact";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Products from "./components/Products";
 import ChangePassword from "./pages/ChangePassword";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export default function App() {
   const { data } = useUserCheckQuery();
   const { user, isLoading } = useSelector((state) => state.authSlice);
   useEffect(() => {
     data;
   }, [data]);
-  // console.log(user, isLoading);
+
+  useEffect(() => {
+    data;
+    AOS.init({ duration: 900, once: true }); // 👈 initialize AOS
+  }, [data]);
 
   if (isLoading) return <LoadingSpinner />;
 

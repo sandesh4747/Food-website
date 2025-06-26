@@ -8,33 +8,42 @@ export default function Updates() {
   if (isLoading) return <p>Loading updates...</p>;
 
   return (
-    <div className="flex flex-col  gap-4 text-[13px] w-full p-4 bg-white rounded-xl shadow-md space-y-4">
-      {orders?.map((order) => (
-        <div
-          key={order._id}
-          className=" flex items-start space-x-3 border-b pb-3 last:border-b-0 gap-2"
-        >
-          <img
-            src={order.items?.[0]?.product?.image || "/default.jpg"}
-            alt="product"
-            className="w-12 h-12 object-cover rounded-full"
-          />
-          <div>
-            <p className="font-semibold">
-              {order.user?.name || "Someone"} ordered
-              <span className="text-orange-500">
-                {"   "}
-                {order.items?.[0]?.product?.name || " a product"}
-              </span>
-            </p>
-            <p className="text-gray-500 text-sm">
-              {formatDistanceToNow(new Date(order.createdAt), {
-                addSuffix: true,
-              })}
-            </p>
+    <div className="flex flex-col gap-4 text-[13px] w-full p-4 bg-white rounded-xl shadow-md space-y-4">
+      {orders?.length > 0 ? (
+        orders.map((order) => (
+          <div
+            key={order._id}
+            className="flex items-start space-x-3 border-b pb-3 last:border-b-0 gap-2"
+          >
+            <img
+              src={order.items?.[0]?.product?.image || "/default.jpg"}
+              alt="product"
+              className="w-12 h-12 object-cover rounded-full"
+            />
+            <div>
+              <p className="font-semibold">
+                {order.user?.name || "Someone"} ordered
+                <span className="text-orange-500">
+                  {"   "}
+                  {order.items?.[0]?.product?.name || " a product"}
+                </span>
+              </p>
+              <p className="text-gray-500 text-sm">
+                {formatDistanceToNow(new Date(order.createdAt), {
+                  addSuffix: true,
+                })}
+              </p>
+            </div>
           </div>
+        ))
+      ) : (
+        <div className="text-center py-4">
+          <p className="text-gray-500">No recent orders yet</p>
+          <p className="text-sm text-gray-400 mt-1">
+            New orders will appear here
+          </p>
         </div>
-      ))}
+      )}
     </div>
   );
 }
