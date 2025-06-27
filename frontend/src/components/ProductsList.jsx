@@ -44,7 +44,7 @@ export default function ProductsList({ onEditClick }) {
   };
 
   return (
-    <div className="p-4 md:p-10 md:bg-red-50 min-h-screen overflow-x-auto ">
+    <div className="p-4 md:p-10 md:bg-red-50 min-h-screen overflow-x-auto">
       <h2 className="text-2xl font-bold text-red-600 mb-6">All Products</h2>
 
       <Card className="hidden md:block  rounded-lg shadow-md bg-white ">
@@ -150,10 +150,10 @@ export default function ProductsList({ onEditClick }) {
       </Card>
 
       {/* Mobile Cards */}
-      <div className="md:hidden space-y-4">
+      <div className="md:hidden space-y-4 ">
         {products.map((product) => (
           <Card key={product._id} className="p-4 shadow-sm">
-            <div className="flex justify-between items-start">
+            <div className="flex gap-10 justify-between items-start">
               <div className="flex items-center gap-3">
                 <img
                   src={product.image[0]}

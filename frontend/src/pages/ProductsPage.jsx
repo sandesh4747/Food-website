@@ -27,7 +27,7 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden max-w-7xl mx-auto overflow-x-auto">
+    <div className="min-h-screen relative overflow-hidden max-w-9xl mx-auto overflow-x-auto">
       <div className="relative container mx-auto px-4 py-16 min-h-screen ">
         <motion.h1
           className="text-4xl font-bold mb-8 text-red-400 text-center"
@@ -57,7 +57,10 @@ export default function ProductsPage() {
         )}
         {activeTab === "create" && <AddProduct />}
         {activeTab === "products" && (
-          <ProductsList onEditClick={handleEditProduct} />
+          <div className="">
+            {" "}
+            <ProductsList onEditClick={handleEditProduct} />
+          </div>
         )}
       </div>
     </div>
