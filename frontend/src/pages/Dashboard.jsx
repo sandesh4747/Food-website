@@ -24,7 +24,7 @@ export default function Dashboard() {
         <div className=" grid   min-h-screen rounded-xl gap-6  w-full h-full bg-[var(--glass)]       xl:grid-cols-[20%_auto_auto]  lg:grid-cols-[17%_1fr]    md:grid-cols-[10%_auto]   grid-cols-[3%_auto] sm:grid-cols-[3%_auto]  overflow-auto overflow-y-scroll sm:pr-[6%] pr-[6%] ">
           <Sidebar admin={admin} />
 
-          <div className="flex-1 px-5  flex ">
+          <div className="">
             <Outlet />
           </div>
           {admin && showRightSide && (
