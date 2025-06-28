@@ -97,7 +97,7 @@ export default function ProfilePage() {
   ];
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-xl shadow-lg mt-10 border border-orange-50">
+    <div className="max-w-md mx-auto p-6 bg-white rounded-xl shadow-lg mt-10  border border-orange-50 mb-20">
       {/* Profile Header - Now properly organized */}
       <div className="flex flex-col items-center mb-8">
         {/* Avatar with user info stacked below */}
@@ -239,7 +239,7 @@ export default function ProfilePage() {
 
         {isAdmin && (
           <>
-            <div className="border-t border-orange-100 my-3"></div>
+            <div className="border-t border-orange-100 my-3 "></div>
             {adminSections.map((section) => (
               <a
                 key={section.path}
