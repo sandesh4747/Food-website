@@ -30,7 +30,7 @@ export default function Tabs() {
         );
 
   return (
-    <div className="pt-10   min-h-screen">
+    <div className="pt-10   mb-25">
       {/* Tabs */}
       <div className="mb-12">
         <ul className="flex flex-wrap justify-center gap-6 border-b border-gray-200">

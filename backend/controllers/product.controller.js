@@ -15,42 +15,6 @@ export const getAllProducts = async (req, res) => {
   }
 };
 
-// export const createProduct = async (req, res) => {
-//   try {
-//     const { name, description, price, category, stock, isFeatured } = req.body;
-
-//     // Check if images are uploaded
-//     if (!req.files || req.files.length === 0) {
-//       return res
-//         .status(400)
-//         .json({ success: false, message: "At least one image is required" });
-//     }
-//     // upload each image to Cloudinary and collect the URLs
-//     const imageUploads = await Promise.all(
-//       req.files.map((file) =>
-//         cloudinary.uploader.upload(file.path, { folder: "products" })
-//       )
-//     );
-//     // Get secure URLs and public IDs
-//     const imageUrls = imageUploads.map((img) => img.secure_url);
-//     const imagePublicIds = imageUploads.map((img) => img.public_id);
-
-//     const product = await Product.create({
-//       name,
-//       description,
-//       price,
-//       category,
-//       stock,
-//       isFeatured,
-//       image: imageUrls,
-//       imagePublicIds,
-//     });
-//     res.status(201).json({ success: true, product });
-//   } catch (error) {
-//     console.log("Error in createProduct function", error);
-//     res.status(500).json({ success: false, message: error.message });
-//   }
-// };
 
 export const createProduct = async (req, res) => {
   try {
